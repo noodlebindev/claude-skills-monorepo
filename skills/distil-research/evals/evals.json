@@ -1,0 +1,29 @@
+{
+  "skill_name": "distil-research",
+  "evals": [
+    {
+      "id": 0,
+      "name": "first-run-agent-commerce",
+      "prompt": "distil my research on ~/Research/agent commerce",
+      "mode": "topic",
+      "expected_behavior": "First-run topic mode. Section-level extraction, archive low-signal files, quarantine ambiguous, produce clean compounding playbook, write manifest. No file should be deleted. Output should feel curated, not summarised.",
+      "fixture": "research-copy/ (a copy of ~/Research/agent commerce)"
+    },
+    {
+      "id": 1,
+      "name": "first-run-google-gemini",
+      "prompt": "distil research on ~/Research/Google Gemini",
+      "mode": "topic",
+      "expected_behavior": "First-run topic mode on smaller folder. Same expectations as eval-0. Easier to validate manually.",
+      "fixture": "research-copy/ (a copy of ~/Research/Google Gemini)"
+    },
+    {
+      "id": 2,
+      "name": "housekeeping-3folder",
+      "prompt": "distil research on the parent ~/Research folder — do a housekeeping pass across topics",
+      "mode": "housekeeping",
+      "expected_behavior": "Cross-topic overlap detection, A-F grade per topic, propose moves but only auto-action if confidence >=95% AND target topic clearly exists AND file not referenced by existing playbook. The two 'I came accross this post' files (one in CLAUDE CO WORK, one in Google Gemini) are natural overlap candidates.",
+      "fixture": "research-sandbox/ with CLAUDE CO WORK/, Google Gemini/, agent commerce/ as subfolders"
+    }
+  ]
+}

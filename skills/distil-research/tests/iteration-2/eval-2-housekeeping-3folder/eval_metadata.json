@@ -1,0 +1,17 @@
+{
+  "eval_id": 2,
+  "eval_name": "housekeeping-3folder",
+  "prompt": "distil research on the parent ~/Research folder — housekeeping mode",
+  "assertions": [
+    {"id": "overlap_report_exists", "text": "Produced _overlap-report.md", "type": "file_exists"},
+    {"id": "report_has_grades", "text": "Report contains A-F grades for each of the 3 topics", "type": "regex_present"},
+    {"id": "report_separates_auto_and_proposed", "text": "Report distinguishes auto-actioned from proposed moves", "type": "section_headings"},
+    {"id": "conservative_auto_moves", "text": "Auto-moves rare or zero; iter 2 explicit: no increase from iter 1", "type": "behavior"},
+    {"id": "no_files_deleted", "text": "Total file count preserved", "type": "behavior"},
+    {"id": "two_post_files_compared", "text": "Report addresses the two 'I came accross this post' files", "type": "regex_present"},
+    {"id": "grades_have_confidence", "text": "Each topic grade has a confidence label (high/medium/low) (iter 2)", "type": "regex_present"},
+    {"id": "filename_normalisation_section_present", "text": "Report contains a filename normalisation section with proposed renames (iter 2)", "type": "section_headings"},
+    {"id": "recommendations_have_confidence", "text": "Recommendations section has confidence labels per item (iter 2)", "type": "regex_present"},
+    {"id": "run_report_complete", "text": "run-report.md has all required sections", "type": "section_headings"}
+  ]
+}

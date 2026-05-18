@@ -1,0 +1,20 @@
+{
+  "eval_id": 0,
+  "eval_name": "first-run-agent-commerce",
+  "prompt": "distil my research on ~/Research/agent commerce",
+  "assertions": [
+    {"id": "playbook_exists", "text": "Produced _distilled/playbook.md", "type": "file_exists"},
+    {"id": "manifest_exists", "text": "Produced _distilled/manifest.json", "type": "file_exists"},
+    {"id": "manifest_valid_json", "text": "Manifest has required top-level fields (topic, last_run, run_mode, files, playbook_sections)", "type": "json_schema"},
+    {"id": "manifest_files_have_reason", "text": "Every file entry has a 'reason' field", "type": "json_schema"},
+    {"id": "manifest_files_have_contribution_type", "text": "Every file entry has a 'contribution_type' field (iter 2)", "type": "json_schema"},
+    {"id": "manifest_valid_verdicts", "text": "All verdicts are kept | partial | archived | quarantined", "type": "json_schema"},
+    {"id": "manifest_valid_contribution_types", "text": "All contribution_types are one of: canonical_source | supporting_signal | partial_extract | superseded_duplicate | low_signal | ambiguous (iter 2)", "type": "json_schema"},
+    {"id": "at_least_one_archived", "text": "At least one file was archived", "type": "behavior"},
+    {"id": "no_files_deleted", "text": "File count preserved (no deletions)", "type": "behavior"},
+    {"id": "playbook_size_in_range_or_justified", "text": "Playbook ≤8 KB, OR playbook_size_justification is non-null (iter 2 size guard)", "type": "size_check"},
+    {"id": "no_inline_citations", "text": "Playbook has no inline source citations", "type": "regex_absent"},
+    {"id": "operator_first_present", "text": "Playbook uses operator-first scaffolding (at least 3 **Rule:** markers) (iter 2)", "type": "regex_present"},
+    {"id": "run_report_complete", "text": "run-report.md has all required sections", "type": "section_headings"}
+  ]
+}

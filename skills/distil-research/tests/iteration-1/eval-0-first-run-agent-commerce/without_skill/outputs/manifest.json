@@ -1,0 +1,70 @@
+{
+  "distilled_at": "2026-05-16",
+  "topic": "agent commerce",
+  "source_count": 8,
+  "playbook_size_kb_estimate": 9.2,
+  "files": [
+    {
+      "original_filename": "Steps to launch a SaaS tool monetized by agent mic.md",
+      "decision": "keep_verbatim",
+      "target_location": "sources/steps-to-launch-saas-agent-micropayments.md",
+      "signal": "high",
+      "rationale": "Concrete 10-step playbook for agent-micropayment SaaS. Distinct lane vs the shopping-agent files. Folded into playbook but kept verbatim because steps are operational and worth re-reading."
+    },
+    {
+      "original_filename": "I'm a product leader and want to know what to buil.md",
+      "decision": "keep_verbatim",
+      "target_location": "sources/product-leader-what-to-build.md",
+      "signal": "high",
+      "rationale": "Best-in-set on primitives, roadmap by horizon, agent-readiness scorecard. Architecture spine of the playbook."
+    },
+    {
+      "original_filename": "What data and systems do retail AI agents need to.md",
+      "decision": "keep_verbatim",
+      "target_location": "sources/retail-agent-data-and-systems.md",
+      "signal": "high",
+      "rationale": "Cleanest articulation of the minimum data stack; useful as a build checklist."
+    },
+    {
+      "original_filename": "“We're still going to be influenced by the people.md",
+      "decision": "keep_verbatim",
+      "target_location": "sources/claude-sdk-shopping-agent-ideas.md",
+      "signal": "high",
+      "rationale": "The only file with 10 ranked, Claude-SDK-specific wedge ideas in the user's exact build context. Largest file (14KB), but signal-dense."
+    },
+    {
+      "original_filename": "Alibaba (9988.HK) is preparing to unveil the integ.md",
+      "decision": "archive",
+      "target_location": "archive/alibaba-qwen-taobao-case-study.md",
+      "signal": "medium",
+      "rationale": "Strong case study but single-vendor. All load-bearing facts folded into 'Market truths' in playbook."
+    },
+    {
+      "original_filename": "What does this mean for agent-agent commerce in 20.md",
+      "decision": "archive",
+      "target_location": "archive/agent-to-agent-commerce-2026-and-beyond.md",
+      "signal": "medium",
+      "rationale": "Futurism; useful framing on agent-for-human vs agent-for-agent and the rendezvous-point thesis. Folded into 'Strategic implications'."
+    },
+    {
+      "original_filename": "Examples of AI personal shoppers like OpenAI Opera.md",
+      "decision": "archive",
+      "target_location": "archive/examples-ai-personal-shoppers.md",
+      "signal": "low-medium",
+      "rationale": "Short, mostly duplicate of wedge ideas in the larger 'We're still going to be influenced' file. The 5 'product ideas for Claude SDK' bullets fully subsumed."
+    },
+    {
+      "original_filename": "What are top use cases for AI agents in retail 202.md",
+      "decision": "archive",
+      "target_location": "archive/top-use-cases-ai-agents-retail-2026.md",
+      "signal": "low-medium",
+      "rationale": "Generic 'top use cases' overview; every point appears in a more concrete form elsewhere."
+    }
+  ],
+  "quarantined": [],
+  "notes": [
+    "Sandbox blocked all write/move operations on this run; intended file moves were not executed. Deliverables returned inline.",
+    "All 8 source files mention the year 2026 prominently — that's the user's reference year, not a hallucination.",
+    "Several files contain bullish vendor analyst predictions. Did not quarantine — flagged inline in playbook 'Open questions'."
+  ]
+}

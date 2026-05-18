@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>distil-research — iteration 2 review</title>
+<style>
+  :root { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; }
+  body { margin: 0; padding: 32px 48px; max-width: 1100px; color: #111; line-height: 1.55; background: #fafafa; }
+  h1 { margin: 0 0 4px 0; font-size: 28px; }
+  h2 { margin: 28px 0 8px 0; font-size: 20px; }
+  h3 { margin: 18px 0 6px 0; font-size: 16px; color: #444; }
+  .sub { color: #666; margin-bottom: 24px; }
+  .card { background: white; border: 1px solid #e3e3e3; border-radius: 10px; padding: 18px 22px; margin: 12px 0; box-shadow: 0 1px 0 rgba(0,0,0,0.02); }
+  .card h2 { margin-top: 0; }
+  a { color: #0a58ca; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul { padding-left: 22px; }
+  li { margin: 4px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #eee; font-size: 14px; vertical-align: top; }
+  th { background: #f4f4f4; }
+  .pass { color: #1a7f37; font-weight: 600; }
+  .fail { color: #cf222e; }
+  code { background: #f0f0f0; padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+  .note { background: #fff8e1; border-left: 3px solid #f0b400; padding: 10px 14px; margin: 12px 0; font-size: 14px; }
+  .diff { background: #e7f3ff; border-left: 3px solid #0a58ca; padding: 10px 14px; margin: 12px 0; font-size: 14px; }
+  .chg { background: #f5f5f5; padding: 12px 14px; border-radius: 6px; margin: 8px 0; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<h1>distil-research — iteration 2 review</h1>
+<div class="sub">Generated 2026-05-17. Skill at <code>~/.claude/skills/distil-research/</code>. Outputs at <code>~/distil-research-tests/iteration-2/</code>.</div>
+
+<h2>Iteration 2 changes applied</h2>
+<div class="chg">
+<ol>
+  <li><strong>Operator-first playbook format</strong> — Rule → Execution → Example → (optional) Edge cases. Minimised descriptive prose.</li>
+  <li><strong>Strict keep gate</strong> — a section is kept only if it adds a unique tactic, non-overlapping framework, or materially better version.</li>
+  <li><strong>In-playbook dedup pass</strong> — repeated ideas across kept sections are merged into a single canonical version.</li>
+  <li><strong>Housekeeping stays conservative</strong> — 0 auto-moves; new confidence scoring on every grade and recommendation.</li>
+  <li><strong>Filename normalisation suggestions</strong> — propose-only, structured names for messy Perplexity/ChatGPT exports.</li>
+  <li><strong>Manifest: <code>contribution_type</code> field</strong> — semantic complement to <code>verdict</code> (canonical_source / supporting_signal / partial_extract / superseded_duplicate / low_signal / ambiguous).</li>
+  <li><strong>Playbook size guard</strong> — >8KB requires explicit justification or split recommendation.</li>
+</ol>
+</div>
+
+<h2>Assertion pass rate — iter 2</h2>
+<table>
+  <tr><th>Eval</th><th>Iter 1</th><th>Iter 2</th></tr>
+  <tr><td>0 — first-run agent commerce</td><td class="pass">10/10 ✓</td><td class="pass">13/13 ✓</td></tr>
+  <tr><td>1 — first-run Google Gemini</td><td class="pass">10/10 ✓</td><td class="pass">13/13 ✓</td></tr>
+  <tr><td>2 — housekeeping 3-folder</td><td class="pass">7/7 ✓</td><td class="pass">10/10 ✓</td></tr>
+</table>
+<p style="font-size: 14px; color: #555;">
+Iter 2 added 3 new assertions per topic eval (contribution_type field present + valid; operator-first markers; size-guard pass) and 3 new for housekeeping (grade confidence labels; filename normalisation section; per-recommendation confidence labels). All pass.
+</p>
+
+<div class="card">
+<h2>Eval 0 — agent commerce</h2>
+
+<h3>Side-by-side: iter 1 vs iter 2</h3>
+<table>
+  <tr><th></th><th>Iter 1</th><th>Iter 2</th></tr>
+  <tr><td>Files kept</td><td>4</td><td>4 (same set; new contribution_type labels: 3 canonical_source + 1 partial_extract)</td></tr>
+  <tr><td>Files archived</td><td>4 (flat "archived")</td><td>4 (2 supporting_signal + 1 superseded_duplicate + 1 low_signal)</td></tr>
+  <tr><td>Playbook size</td><td>6.8 KB</td><td>6.9 KB (~same, but operator-first re-shaped)</td></tr>
+  <tr><td>Section shape</td><td>Mixed prose + bullets</td><td>Rule / Execution / Example / (Edge) on every tactic section</td></tr>
+  <tr><td>Manifest fields per file</td><td>verdict + reason + confidence + sections_kept + sections_influenced_in_playbook</td><td>+ <strong>contribution_type</strong></td></tr>
+</table>
+
+<h3>iter 2 outputs</h3>
+<ul>
+  <li><a href="eval-0-first-run-agent-commerce/with_skill/outputs/playbook.md"><strong>playbook.md</strong></a> (6.9 KB) — operator-first format</li>
+  <li><a href="eval-0-first-run-agent-commerce/with_skill/outputs/manifest.json">manifest.json</a> (with contribution_type)</li>
+  <li><a href="eval-0-first-run-agent-commerce/with_skill/outputs/run-report.md">run-report.md</a></li>
+  <li><a href="eval-0-first-run-agent-commerce/with_skill/outputs/chat-summary.md">chat-summary.md</a></li>
+  <li><a href="eval-0-first-run-agent-commerce/with_skill/research-copy/">research-copy/ (final folder state)</a></li>
+</ul>
+
+<h3>Compare iter 1 ↔ iter 2 playbooks</h3>
+<ul>
+  <li><a href="../iteration-1/eval-0-first-run-agent-commerce/with_skill/outputs/playbook.md">iter 1 playbook</a> (6.8 KB)</li>
+  <li><a href="eval-0-first-run-agent-commerce/with_skill/outputs/playbook.md">iter 2 playbook</a> (6.9 KB)</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Eval 1 — Google Gemini</h2>
+
+<h3>Side-by-side: iter 1 vs iter 2</h3>
+<table>
+  <tr><th></th><th>Iter 1</th><th>Iter 2</th></tr>
+  <tr><td>Playbook size</td><td><strong>8.0 KB</strong> (at upper bound)</td><td><strong>7.3 KB</strong> (safely under)</td></tr>
+  <tr><td>Size-guard outcome</td><td>n/a in iter 1</td><td>≤8 KB → no justification needed; split flagged as future move only</td></tr>
+  <tr><td>Files kept</td><td>2</td><td>2 (both canonical_source)</td></tr>
+  <tr><td>Files archived</td><td>3 (flat)</td><td>3 (1 superseded_duplicate + 2 low_signal)</td></tr>
+  <tr><td>Sections</td><td>9</td><td>13 — each of the 5 moves became its own deep-linkable section</td></tr>
+</table>
+
+<h3>iter 2 outputs</h3>
+<ul>
+  <li><a href="eval-1-first-run-google-gemini/with_skill/outputs/playbook.md"><strong>playbook.md</strong></a> (7.3 KB)</li>
+  <li><a href="eval-1-first-run-google-gemini/with_skill/outputs/manifest.json">manifest.json</a></li>
+  <li><a href="eval-1-first-run-google-gemini/with_skill/outputs/run-report.md">run-report.md</a></li>
+  <li><a href="eval-1-first-run-google-gemini/with_skill/outputs/chat-summary.md">chat-summary.md</a></li>
+</ul>
+
+<h3>Compare iter 1 ↔ iter 2 playbooks</h3>
+<ul>
+  <li><a href="../iteration-1/eval-1-first-run-google-gemini/with_skill/outputs/playbook.md">iter 1 playbook</a> (8.0 KB)</li>
+  <li><a href="eval-1-first-run-google-gemini/with_skill/outputs/playbook.md">iter 2 playbook</a> (7.3 KB)</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Eval 2 — Housekeeping pass on 3-folder sandbox</h2>
+
+<h3>Side-by-side: iter 1 vs iter 2</h3>
+<table>
+  <tr><th></th><th>Iter 1</th><th>Iter 2</th></tr>
+  <tr><td>Auto-actioned moves</td><td>0</td><td>0 (held)</td></tr>
+  <tr><td>Proposed moves</td><td>0</td><td>0 (held)</td></tr>
+  <tr><td>Topic grades</td><td>B / B / C+</td><td>B / B / C+ (with confidence labels: high / high / medium)</td></tr>
+  <tr><td>Filename normalisation suggestions</td><td>0 (issue flagged but no concrete renames proposed)</td><td><strong>12 proposed renames</strong> across 3 folders, each with confidence label</td></tr>
+  <tr><td>Recommendations</td><td>3 (no confidence labels)</td><td>4 (each with confidence label)</td></tr>
+</table>
+
+<h3>iter 2 outputs</h3>
+<ul>
+  <li><a href="eval-2-housekeeping-3folder/with_skill/outputs/overlap-report.md"><strong>overlap-report.md</strong></a></li>
+  <li><a href="eval-2-housekeeping-3folder/with_skill/outputs/run-report.md">run-report.md</a></li>
+  <li><a href="eval-2-housekeeping-3folder/with_skill/outputs/chat-summary.md">chat-summary.md</a></li>
+</ul>
+
+<h3>Compare iter 1 ↔ iter 2 reports</h3>
+<ul>
+  <li><a href="../iteration-1/eval-2-housekeeping-3folder/with_skill/outputs/overlap-report.md">iter 1 overlap report</a></li>
+  <li><a href="eval-2-housekeeping-3folder/with_skill/outputs/overlap-report.md">iter 2 overlap report</a></li>
+</ul>
+</div>
+
+<h2>Where to look first</h2>
+<ol>
+  <li>Compare <a href="../iteration-1/eval-0-first-run-agent-commerce/with_skill/outputs/playbook.md"><strong>Eval 0 iter 1</strong></a> ↔ <a href="eval-0-first-run-agent-commerce/with_skill/outputs/playbook.md"><strong>Eval 0 iter 2</strong></a> playbooks side by side. The operator-first format change is the biggest qualitative shift. Does it read better as a "what to do today" reference, or did Rule/Execution/Example boilerplate make it feel mechanical?</li>
+  <li>Open the <a href="eval-2-housekeeping-3folder/with_skill/outputs/overlap-report.md"><strong>Eval 2 iter 2 overlap report</strong></a>. Section 6 (filename normalisation) is new — 12 proposed renames. Are these the right pattern (<code>&lt;topic&gt;-&lt;source&gt;-&lt;YYYY-MM&gt;.md</code>)?</li>
+  <li>Open any <a href="eval-0-first-run-agent-commerce/with_skill/outputs/manifest.json">manifest.json</a> to see the new <code>contribution_type</code> field in action. Does the distinction between canonical_source / supporting_signal / superseded_duplicate / low_signal feel useful, or redundant with <code>verdict</code>?</li>
+</ol>
+
+<h2>What's left to do (separate from iteration)</h2>
+<ul>
+  <li>Workspace is at <code>~/distil-research-tests/</code>. You earlier asked for the workspace to live at <code>~/.claude/skills/distil-research-workspace/</code> with narrow permissions added to <code>settings.local.json</code>. I'll prepare that diff after you've reviewed iter 2 — it's the unblock for future subagent-driven iterations.</li>
+</ul>
+
+</body>
+</html>
