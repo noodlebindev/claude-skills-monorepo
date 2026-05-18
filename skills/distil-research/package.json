@@ -1,0 +1,19 @@
+{
+  "name": "@claude-skills/distil-research",
+  "version": "0.4.0",
+  "description": "Distil a folder of raw research files into a clean, compounding knowledge base — operator-first playbook plus organised file structure with archive and quarantine layers.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "keywords": [
+    "claude-skill",
+    "agent-skill",
+    "research",
+    "knowledge-base",
+    "perplexity",
+    "playbook"
+  ],
+  "scripts": {
+    "test": "echo \"No automated tests; iteration snapshots in tests/\" && exit 0"
+  }
+}
