@@ -1,0 +1,15 @@
+{
+  "name": "@claude-skills/{{SKILL_NAME}}",
+  "version": "0.1.0",
+  "description": "{{SKILL_DESCRIPTION}}",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "keywords": [
+    "claude-skill",
+    "agent-skill"
+  ],
+  "scripts": {
+    "test": "echo \"No tests defined for {{SKILL_NAME}}\" && exit 0"
+  }
+}

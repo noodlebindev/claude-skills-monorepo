@@ -1,0 +1,7 @@
+packages:
+  - "skills/*"
+
+# pnpm 11+ requires explicit allowlist for postinstall scripts.
+# esbuild is a transitive dep of tsx (used to run our TS scripts directly).
+allowBuilds:
+  esbuild: true
