@@ -9,6 +9,14 @@ on:
 permissions:
   contents: read
 
+# Node is set up BEFORE pnpm so the pnpm installer sees the right Node version.
+# pnpm 11+ requires Node >= 22.13, which the runner's default Node does not satisfy.
+# We use corepack (bundled with Node 22+) and the `packageManager` field in
+# package.json to pin the pnpm version — no separate pnpm/action-setup action needed.
+
+env:
+  COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
+
 jobs:
   check:
     name: Lint, audit, contamination
@@ -16,14 +24,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
-        with:
-          run_install: false
-
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-          cache: "pnpm"
+
+      - name: Enable corepack
+        run: |
+          corepack enable
+          corepack prepare --activate
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
 
       - name: Install
         run: pnpm install --frozen-lockfile
@@ -44,14 +60,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
-        with:
-          run_install: false
-
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-          cache: "pnpm"
+
+      - name: Enable corepack
+        run: |
+          corepack enable
+          corepack prepare --activate
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
 
       - name: Install
         run: pnpm install --frozen-lockfile
